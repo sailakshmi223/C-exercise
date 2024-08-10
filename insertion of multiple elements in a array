@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    int a[n];
+    printf("Enter the elements of the array: ");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    printf("Original array: ");
+    for(int i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+
+    printf("Enter the number of elements you want to insert: ");
+    int e;
+    scanf("%d", &e);
+
+    int in, val;
+    int b[n + e];
+
+    // Initialize the b array with the elements of a
+    for(int i = 0; i < n; i++) {
+        b[i] = a[i];
+    }
+
+    // Insert new elements
+    for(int k = 0; k < e; k++) {
+        printf("Enter the index to insert: ");
+        scanf("%d", &in);
+        printf("Enter the value to insert: ");
+        scanf("%d", &val);
+
+        // Shift elements to the right from the index
+        for(int i = n + k; i > in; i--) {
+            b[i] = b[i - 1];
+        }
+        b[in] = val;
+    }
+
+    printf("Array after insertions: ");
+    for(int i = 0; i < n + e; i++) {
+        printf("%d ", b[i]);
+    }
+
+    return 0;
+}
